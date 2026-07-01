@@ -12,6 +12,23 @@ from api.constants import BACKEND_API_ENDPOINT
 from api.utils.tunnel import TunnelURLProvider
 
 
+def get_forwarded_url(request) -> str:
+    """Reconstruct the public-facing URL from X-Forwarded-Proto/Host headers.
+
+    Behind a reverse proxy (nginx, Cloud Run, etc.) ``request.url`` uses
+    the internal scheme (``http://``) while the telephony provider signed
+    the webhook against the external URL (``https://``).  This helper
+    rebuilds the URL so signature verification succeeds.
+    """
+    url = str(request.url)
+    forwarded_proto = request.headers.get("x-forwarded-proto")
+    if forwarded_proto:
+        scheme = get_scheme(url)
+        if scheme and scheme != forwarded_proto:
+            url = forwarded_proto + url[len(scheme):]
+    return url
+
+
 def get_scheme(url: str) -> str | None:
     """
     Extract scheme from a given URL if present.

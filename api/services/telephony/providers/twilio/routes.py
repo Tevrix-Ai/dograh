@@ -14,6 +14,7 @@ from starlette.responses import HTMLResponse
 from api.db import db_client
 from api.services.telephony.base import TelephonyProvider
 from api.services.telephony.factory import get_telephony_provider_for_run
+from api.utils.common import get_forwarded_url
 from api.services.telephony.status_processor import (
     StatusCallbackRequest,
     _process_status_update,
@@ -62,7 +63,7 @@ async def handle_twiml_webhook(
     callback_data = dict(await request.form())
 
     is_valid = await provider.verify_inbound_signature(
-        str(request.url),
+        get_forwarded_url(request),
         callback_data,
         dict(request.headers),
     )
@@ -118,7 +119,7 @@ async def handle_twilio_status_callback(
     )
 
     is_valid = await provider.verify_inbound_signature(
-        str(request.url),
+        get_forwarded_url(request),
         callback_data,
         dict(request.headers),
     )
