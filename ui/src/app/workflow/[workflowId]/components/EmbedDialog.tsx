@@ -130,7 +130,7 @@ export function EmbedDialog({
                             callToActionText,
                             size: "medium",
                             autoStart: false,
-                            containerId: embedMode === "inline" ? "dograh-inline-container" : undefined,
+                            containerId: embedMode === "inline" ? "tevrix-inline-container" : undefined,
                         },
                         usage_limit: null,
                         expires_in_days: null,
@@ -323,7 +323,7 @@ export function EmbedDialog({
                                             <div className="space-y-2">
                                                 <div className="font-medium">Headless (Bring Your Own UI)</div>
                                                 <div className="text-xs text-muted-foreground">
-                                                    No UI - drive calls from your own buttons via the JS API
+                                                    No UI — drive calls from your own buttons via the JS API
                                                 </div>
                                             </div>
                                         </button>
@@ -436,33 +436,33 @@ export function EmbedDialog({
                                                 <h4 className="font-medium mb-2">Integration Instructions</h4>
                                                 <ul className="text-sm space-y-2 text-muted-foreground">
                                                     <li>• Add the embed script tag to your page (see below).</li>
-                                                    <li>• The widget renders no UI - render your own buttons.</li>
-                                                    <li>• Call <code className="text-xs">window.DograhWidget.start()</code> to begin a call.</li>
-                                                    <li>• Call <code className="text-xs">window.DograhWidget.end()</code> to end it.</li>
+                                                    <li>• The widget renders no UI — render your own buttons.</li>
+                                                    <li>• Call <code className="text-xs">window.TevrixWidget.start()</code> to begin a call.</li>
+                                                    <li>• Call <code className="text-xs">window.TevrixWidget.end()</code> to end it.</li>
                                                     <li>• Subscribe to <code className="text-xs">onCallStart</code>, <code className="text-xs">onCallEnd</code>, <code className="text-xs">onStatusChange</code>, <code className="text-xs">onError</code> to drive your UI.</li>
                                                     <li>• <code className="text-xs">start()</code> must run inside a user-gesture handler (click) so the browser grants microphone access.</li>
                                                 </ul>
                                             </div>
 
                                             <div className="rounded-lg bg-blue-50 dark:bg-blue-950/20 p-4 border border-blue-200 dark:border-blue-800">
-                                                <h4 className="font-medium mb-2 text-blue-900 dark:text-blue-100">Example - track status in your own state</h4>
+                                                <h4 className="font-medium mb-2 text-blue-900 dark:text-blue-100">Example — track status in your own state</h4>
                                                 <p className="text-xs text-blue-900/80 dark:text-blue-100/80 mb-2">
                                                     Mirror the call status into a variable you control, then render whatever UI you like from it. The status values are <code className="text-xs">idle</code>, <code className="text-xs">connecting</code>, <code className="text-xs">connected</code>, <code className="text-xs">failed</code>.
                                                 </p>
                                                 <pre className="text-xs overflow-x-auto">
-                                                    <code className="text-blue-800 dark:text-blue-200">{`// Vanilla JS - keep your own state, render however you want
+                                                    <code className="text-blue-800 dark:text-blue-200">{`// Vanilla JS — keep your own state, render however you want
 let callStatus = 'idle';
 
-window.DograhWidget?.onStatusChange((status) => {
+window.TevrixWidget?.onStatusChange((status) => {
   callStatus = status;
   // ...trigger your render here (re-paint DOM, dispatch event, etc.)
 });
 
 document.getElementById('talk-btn').addEventListener('click', () => {
   if (callStatus === 'connected' || callStatus === 'connecting') {
-    window.DograhWidget.end();
+    window.TevrixWidget.end();
   } else {
-    window.DograhWidget.start();
+    window.TevrixWidget.start();
   }
 });`}</code>
                                                 </pre>
@@ -472,12 +472,12 @@ document.getElementById('talk-btn').addEventListener('click', () => {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
-    window.DograhWidget?.onStatusChange(setStatus);
+    window.TevrixWidget?.onStatusChange(setStatus);
   }, []);
 
   const isLive = status === 'connected' || status === 'connecting';
   return (
-    <button onClick={() => isLive ? window.DograhWidget.end() : window.DograhWidget.start()}>
+    <button onClick={() => isLive ? window.TevrixWidget.end() : window.TevrixWidget.start()}>
       {/* render anything you want from \`status\` */}
     </button>
   );
@@ -493,26 +493,26 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                             <div className="rounded-lg bg-muted/50 p-4">
                                                 <h4 className="font-medium mb-2">Integration Instructions</h4>
                                                 <ul className="text-sm space-y-2 text-muted-foreground">
-                                                    <li>• Add a div with id=&quot;dograh-inline-container&quot; where you want the widget</li>
+                                                    <li>• Add a div with id=&quot;tevrix-inline-container&quot; where you want the widget</li>
                                                     <li>• The widget will render inside this container</li>
                                                     <li>• You have full control over the container&apos;s styling</li>
-                                                    <li>• Call window.DograhWidget.start() to begin the call</li>
-                                                    <li>• Call window.DograhWidget.end() to end the call</li>
+                                                    <li>• Call window.TevrixWidget.start() to begin the call</li>
+                                                    <li>• Call window.TevrixWidget.end() to end the call</li>
                                                 </ul>
                                             </div>
 
                                             <div className="rounded-lg bg-blue-50 dark:bg-blue-950/20 p-4 border border-blue-200 dark:border-blue-800">
                                                 <h4 className="font-medium mb-2 text-blue-900 dark:text-blue-100">Example React Component</h4>
                                                 <pre className="text-xs overflow-x-auto">
-                                                    <code className="text-blue-800 dark:text-blue-200">{`export function DograhAgent() {
+                                                    <code className="text-blue-800 dark:text-blue-200">{`export function TevrixAgent() {
   const [isCallActive, setIsCallActive] = useState(false);
 
   useEffect(() => {
     // Widget will auto-initialize when script loads
-    window.DograhWidget?.onCallStart(() => {
+    window.TevrixWidget?.onCallStart(() => {
       setIsCallActive(true);
     });
-    window.DograhWidget?.onCallEnd(() => {
+    window.TevrixWidget?.onCallEnd(() => {
       setIsCallActive(false);
     });
   }, []);
@@ -520,11 +520,11 @@ document.getElementById('talk-btn').addEventListener('click', () => {
   return (
     <div className="my-8">
       <h2>Talk to Our Agent</h2>
-      <div id="dograh-inline-container" className="min-h-[400px]">
+      <div id="tevrix-inline-container" className="min-h-[400px]">
         {/* Widget renders here */}
       </div>
       <button
-        onClick={() => window.DograhWidget?.start()}
+        onClick={() => window.TevrixWidget?.start()}
         disabled={isCallActive}
       >
         Start Call
