@@ -1718,7 +1718,7 @@ export const updateUserOnboardingStateApiV1UserOnboardingStatePut = <ThrowOnErro
 
 export const createMpsCreditPurchaseUrlApiV1OrganizationsUsageMpsCreditsPurchaseUrlPost = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).post<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/usage/mps-credits/purchase-url', ...options });
 
-export const getBillingCreditsApiV1OrganizationsBillingCreditsGet = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/billing/credits', ...options });
+export const getBillingCreditsApiV1OrganizationsBillingCreditsGet = <ThrowOnError extends boolean = false>(options?: Options<{ query?: { page?: number; limit?: number } }, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/billing/credits', ...options });
 
 export const getModelConfigurationV2ApiV1OrganizationsModelConfigurationsV2Get = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/model-configurations/v2', ...options });
 
