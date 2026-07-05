@@ -1,11 +1,5 @@
 import { cn } from "@/lib/utils";
 
-// Reusable Dograh wordmark. Theme-aware by default: the dark logo shows on light
-// surfaces and the light/cream logo shows on dark. Pass `inverse` to force the
-// light logo on an always-dark surface (e.g. the auth brand panel). Pass `mark`
-// to render the square logo mark instead of the full wordmark (e.g. the app
-// sidebar header). Height is controlled by the caller via className (e.g.
-// "h-7"); width stays auto so each lockup keeps its aspect ratio.
 export function BrandLogo({
   className,
   inverse = false,
@@ -15,24 +9,19 @@ export function BrandLogo({
   inverse?: boolean;
   mark?: boolean;
 }) {
-  if (mark) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src="/dograh-mark.png" alt="Dograh" className={cn("w-auto select-none", className)} />
-    );
-  }
-  if (inverse) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src="/dograh-logo-inverse.png" alt="Dograh" className={cn("w-auto select-none", className)} />
-    );
-  }
   return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/dograh-logo.png" alt="Dograh" className={cn("block w-auto select-none dark:hidden", className)} />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/dograh-logo-inverse.png" alt="Dograh" className={cn("hidden w-auto select-none dark:block", className)} />
-    </>
+    <span className={cn("flex items-center gap-2 select-none font-bold text-xl", className)}>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="6" fill="url(#tevrix-grad)" />
+        <path d="M8 14l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <defs>
+          <linearGradient id="tevrix-grad" x1="0" y1="0" x2="28" y2="28">
+            <stop stopColor="#6366f1" />
+            <stop offset="1" stopColor="#8b5cf6" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span className={inverse ? "text-white" : ""}>Tevrix AI</span>
+    </span>
   );
 }
