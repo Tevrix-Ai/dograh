@@ -11247,11 +11247,11 @@ export type HealthApiV1HealthGetResponses = {
 export type HealthApiV1HealthGetResponse = HealthApiV1HealthGetResponses[keyof HealthApiV1HealthGetResponses];
 
 // Stub types for UI code referencing unreleased API features
-export type OrganizationContextResponse = { plan?: string; features?: string[]; [key: string]: unknown };
-export type OnboardingStateUpdate = { completed?: boolean; [key: string]: unknown };
-export type MpsBillingCreditsResponse = { credits?: number; remaining_credits?: number; total_credits_used?: number; total_quota?: number; billing_version?: string; ledger_entries?: MpsCreditLedgerEntryResponse[]; page?: number; total_count?: number; total_pages?: number; [key: string]: unknown };
-export type MpsCreditLedgerEntryResponse = { id: number; metric_code: string; entry_type: string; credits_delta: number; balance_after: number; billable_quantity: number | null; quantity_unit: string | null; workflow_id: number | null; workflow_run_id: number | null; origin: string | null; amount_minor: number | null; amount_currency: string | null; created_at: string; [key: string]: unknown };
-export type OrganizationAiModelConfigurationV2 = { mode?: string; [key: string]: unknown };
-export type OrganizationPreferences = { [key: string]: unknown };
-export type PropertyRendererOptions = { [key: string]: unknown };
-export type ToolParameter = { name: string; type?: string; description?: string; required?: boolean; [key: string]: unknown };
+export type OrganizationContextResponse = { plan?: string; features?: string[]; [key: string]: any };
+export type OnboardingStateUpdate = { completed?: boolean; [key: string]: any };
+export type MpsBillingCreditsResponse = { credits?: number; remaining_credits?: number; total_credits_used?: number; total_quota?: number; billing_version?: string; ledger_entries?: MpsCreditLedgerEntryResponse[]; page?: number; total_count?: number; total_pages?: number; [key: string]: any };
+export type MpsCreditLedgerEntryResponse = { id: number; metric_code: string; entry_type: string; credits_delta: number; balance_after: number; billable_quantity: number | null; quantity_unit: string | null; workflow_id: number | null; workflow_run_id: number | null; origin: string | null; amount_minor: number | null; amount_currency: string | null; created_at: string; [key: string]: any };
+export type OrganizationAiModelConfigurationV2 = { mode?: string; [key: string]: any };
+export type OrganizationPreferences = { [key: string]: any };
+export type PropertyRendererOptions = { [key: string]: any };
+export type ToolParameter = { name: string; type?: string; description?: string; required?: boolean; [key: string]: any };
