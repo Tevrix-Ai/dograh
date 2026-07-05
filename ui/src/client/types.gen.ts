@@ -1824,6 +1824,7 @@ export type HealthResponse = {
      * Force Turn Relay
      */
     force_turn_relay: boolean;
+    tunnel_url?: string | null;
 };
 
 /**
