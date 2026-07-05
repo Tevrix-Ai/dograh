@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1
 # Multi-stage build
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
@@ -12,7 +11,8 @@ RUN apk add --no-cache python3 make g++ libc6-compat
 COPY ui/package*.json ./
 
 # Clean install with proper handling of native modules
-RUN --mount=type=cache,target=/root/.npm npm ci
+# (plain npm install: the VM builds with the legacy Docker builder, no BuildKit cache mounts)
+RUN npm install
 
 # Stage 2: Builder
 FROM node:20-alpine AS builder
@@ -38,8 +38,6 @@ COPY ui/src ./src
 # Set build-time environment variables (needed for Next.js build)
 ENV NEXT_PUBLIC_NODE_ENV="oss"
 ENV NEXT_TELEMETRY_DISABLED="1"
-ENV NEXT_PUBLIC_CHATWOOT_URL="https://chat.dograh.com"
-ENV NEXT_PUBLIC_CHATWOOT_TOKEN="3fkFx2mCEjNHjM9gaNc4A82X"
 ENV BACKEND_URL="http://api:8000"
 
 # Build the application with standalone mode

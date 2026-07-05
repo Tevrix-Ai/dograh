@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 
-import { GitHubStarBadge } from '@/components/layout/GitHubStarBadge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/lib/auth';
@@ -34,13 +33,7 @@ export default function OverviewPage() {
                             )}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        {isOSSMode && (
-                            <div className="mb-6">
-                                <GitHubStarBadge label="Star us on GitHub" showCount source="overview_page" />
-                            </div>
-                        )}
-                    </CardContent>
+                    <CardContent />
                 </Card>
 
                 {/* Quick Actions */}
@@ -90,7 +83,7 @@ export default function OverviewPage() {
                         <div className="flex flex-wrap gap-4">
                             <Button asChild variant="outline">
                                 <a
-                                    href="https://docs.dograh.com"
+                                    href="https://docs.tevrixai.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -98,12 +91,8 @@ export default function OverviewPage() {
                                 </a>
                             </Button>
                             <Button asChild variant="outline">
-                                <a
-                                    href="https://github.com/dograh-hq/dograh/issues"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Report an Issue
+                                <a href="mailto:support@tevrixai.com">
+                                    Contact Support
                                 </a>
                             </Button>
                         </div>
