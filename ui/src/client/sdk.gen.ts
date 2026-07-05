@@ -1719,3 +1719,15 @@ export const updateUserOnboardingStateApiV1UserOnboardingStatePut = <ThrowOnErro
 export const createMpsCreditPurchaseUrlApiV1OrganizationsUsageMpsCreditsPurchaseUrlPost = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).post<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/usage/mps-credits/purchase-url', ...options });
 
 export const getBillingCreditsApiV1OrganizationsBillingCreditsGet = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/billing/credits', ...options });
+
+export const getModelConfigurationV2ApiV1OrganizationsModelConfigurationsV2Get = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/model-configurations/v2', ...options });
+
+export const getModelConfigurationV2DefaultsApiV1OrganizationsModelConfigurationsV2DefaultsGet = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/model-configurations/v2/defaults', ...options });
+
+export const migrateModelConfigurationV2ApiV1OrganizationsModelConfigurationsV2MigratePost = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).post<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/model-configurations/v2/migrate', ...options });
+
+export const saveModelConfigurationV2ApiV1OrganizationsModelConfigurationsV2Put = <ThrowOnError extends boolean = false>(options?: Options<any, ThrowOnError>) => (options?.client ?? client).put<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/model-configurations/v2', ...options });
+
+export const getPreferencesApiV1OrganizationsPreferencesGet = <ThrowOnError extends boolean = false>(options?: Options<Record<string, never>, ThrowOnError>) => (options?.client ?? client).get<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/preferences', ...options });
+
+export const savePreferencesApiV1OrganizationsPreferencesPut = <ThrowOnError extends boolean = false>(options?: Options<any, ThrowOnError>) => (options?.client ?? client).put<{ 200: Record<string, unknown> }, unknown, ThrowOnError>({ url: '/api/v1/organizations/preferences', ...options });
